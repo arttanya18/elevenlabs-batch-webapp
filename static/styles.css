@@ -1,0 +1,369 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f4ee;
+  --panel: #ffffff;
+  --ink: #22211d;
+  --muted: #6d685f;
+  --line: #ded8cb;
+  --accent: #247c6d;
+  --accent-strong: #155f54;
+  --warn: #a56518;
+  --danger: #b23b3b;
+  --soft-green: #e6f2ee;
+  --soft-amber: #fff1d8;
+  --soft-red: #fbe7e5;
+  --shadow: 0 20px 50px rgba(54, 48, 37, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px clamp(20px, 4vw, 56px) 18px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(420px, 1.2fr);
+  gap: 18px;
+  padding: 0 clamp(20px, 4vw, 56px) 40px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.controls-panel,
+.generate-panel {
+  align-self: start;
+}
+
+.generate-panel {
+  grid-column: 1 / -1;
+}
+
+.section-heading,
+.generate-actions,
+.progress-meta,
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.subtle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.status-pill,
+.sample-link,
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  border-radius: 999px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.status-pill.ok {
+  border-color: #9bc9bd;
+  background: var(--soft-green);
+  color: var(--accent-strong);
+}
+
+.status-pill.missing,
+.download-button.disabled {
+  border-color: #e2b7a9;
+  background: var(--soft-red);
+  color: var(--danger);
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+label span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdfa;
+  color: var(--ink);
+  padding: 12px 13px;
+  min-height: 46px;
+}
+
+input[type="file"] {
+  padding: 10px;
+}
+
+.file-drop {
+  display: block;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 800;
+  min-height: 46px;
+  padding: 0 18px;
+}
+
+.primary-button:hover {
+  background: var(--accent-strong);
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  background: #a7aaa3;
+}
+
+.config-grid,
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.metric {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fffdfa;
+  min-width: 0;
+}
+
+.metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.compact {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.table-zone {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.table-shell {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdfa;
+  max-height: 360px;
+}
+
+.table-shell.empty {
+  padding: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #f7f1e7;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+td {
+  overflow-wrap: anywhere;
+}
+
+.message {
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 13px 14px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.message.error {
+  background: var(--soft-red);
+  color: var(--danger);
+  border: 1px solid #e8bbb4;
+}
+
+.message.warning {
+  background: var(--soft-amber);
+  color: var(--warn);
+  border: 1px solid #ebce92;
+}
+
+.message.success {
+  background: var(--soft-green);
+  color: var(--accent-strong);
+  border: 1px solid #9bc9bd;
+}
+
+.toggle-row {
+  justify-content: flex-start;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.toggle-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.generate-actions {
+  justify-content: flex-start;
+  margin-top: 22px;
+}
+
+.download-button {
+  border-color: #9bc9bd;
+  background: var(--soft-green);
+  color: var(--accent-strong);
+}
+
+.progress-wrap {
+  margin-top: 20px;
+}
+
+.progress-track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e4dfd4;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), #d49b33);
+  transition: width 180ms ease;
+}
+
+#jobLog {
+  margin-top: 0;
+  max-height: 320px;
+}
+
+@media (max-width: 980px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .config-grid,
+  .metrics,
+  .compact,
+  .table-zone {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header,
+  .section-heading,
+  .generate-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

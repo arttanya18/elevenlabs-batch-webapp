@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ElevenLabs Batch Voice Generator</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">ElevenLabs</p>
+        <h1>Batch Voice Generator</h1>
+      </div>
+      <div class="status-pill" id="apiKeyStatus">Checking API key</div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel controls-panel" aria-labelledby="setupTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 1</p>
+            <h2 id="setupTitle">Prepare CSV</h2>
+          </div>
+          <a class="sample-link" href="/static/sample_script.csv" download>Sample CSV</a>
+        </div>
+
+        <form id="analyzeForm" class="form-grid">
+          <label>
+            <span>Episode name</span>
+            <input id="episodeName" name="episode_name" type="text" value="EP01" autocomplete="off" />
+          </label>
+
+          <label class="file-drop">
+            <span>CSV file</span>
+            <input id="csvFile" name="file" type="file" accept=".csv,text/csv" required />
+          </label>
+
+          <button class="primary-button" id="analyzeButton" type="submit">
+            Analyze CSV
+          </button>
+        </form>
+
+        <div class="config-grid" id="configGrid"></div>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="analysisTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 2</p>
+            <h2 id="analysisTitle">Review Plan</h2>
+          </div>
+          <span class="subtle" id="analysisTime">No analysis yet</span>
+        </div>
+
+        <div class="metrics" id="metrics"></div>
+
+        <div id="messages"></div>
+
+        <div class="table-zone">
+          <div>
+            <h3>Speaker summary</h3>
+            <div id="speakerSummary" class="table-shell empty">Upload and analyze a CSV first.</div>
+          </div>
+          <div>
+            <h3>Voice IDs</h3>
+            <div id="voiceValidation" class="table-shell empty">Voice checks will appear here.</div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Preview</h3>
+          <div id="previewTable" class="table-shell empty">The first 20 rows will appear here.</div>
+        </div>
+      </section>
+
+      <section class="panel generate-panel" aria-labelledby="generateTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 3</p>
+            <h2 id="generateTitle">Generate Audio</h2>
+          </div>
+          <label class="toggle-row">
+            <input id="forceRegenerate" type="checkbox" />
+            <span>Force regenerate</span>
+          </label>
+        </div>
+
+        <div class="generate-actions">
+          <button class="primary-button" id="generateButton" type="button" disabled>
+            Proceed Generate Audio
+          </button>
+          <a class="download-button disabled" id="downloadButton" href="#" aria-disabled="true">Download ZIP</a>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="jobStatus">Waiting for valid analysis</span>
+            <span id="progressLabel">0%</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="metrics compact" id="jobMetrics"></div>
+
+        <div>
+          <h3>Generation log</h3>
+          <div id="jobLog" class="table-shell empty">Run generation to see clip status.</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
